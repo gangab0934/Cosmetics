@@ -1,5 +1,8 @@
 import React from "react";
 import { Link } from "react-router-dom";
+import { useCart } from "./CartContext";
+import { useLiked } from "./LikedContext";
+import { HeartIcon } from "@heroicons/react/24/outline";
 
 // Sample product data
 const products = [
@@ -27,27 +30,57 @@ const products = [
     price: "$29.99",
     image: "https://th.bing.com/th/id/OIP.SX2uVHZ4B0qC8P2if9dWPQHaEx?w=277&h=180&c=7&r=0&o=5&dpr=1.3&pid=1.7",
   },
+  {
+    id: 5,
+    name: "Makeup Kit",
+    price: "$15.99",
+    image: "https://th.bing.com/th/id/OPAC.ZsOJmFgbVUMeLw474C474?w=592&h=550&o=5&dpr=1.3&pid=21.1",
+  },
+  {
+    id: 6,
+    name: "Neo Cushion Glow",
+    price: "$30.99",
+    image: "https://th.bing.com/th/id/OPAC.D5Va1qczUtpT3Q474C474?w=592&h=550&o=5&dpr=1.3&pid=21.1",
+  },
+  {
+    id: 7,
+    name: "Phyto Teint Perfection Luminous Mat",
+    price: "$60.99",
+    image: "https://a.cdnsbn.com/images/products/l/34003383102.jpg",
+  },
+  {
+    id: 8,
+    name: "Mascara 8.5Gm",
+    price: "$29.99",
+    image: "https://th.bing.com/th/id/OPAC.N0GPNFeJJAtTNQ474C474?w=592&h=550&o=5&dpr=1.3&pid=21.1",
+  },
 ];
 
 const Products = () => {
+  const { addToCart } = useCart(); // Get addToCart function
+  const {likedItems, toggleLike} = useLiked();
+
   return (
     <div className="products-container">
       <h2 className="products-title">Our Products</h2>
-      
+
       <div className="products-grid">
         {products.map((product) => (
           <div key={product.id} className="product-card">
             <img src={product.image} alt={product.name} className="product-image" />
             <h3 className="product-name">{product.name}</h3>
             <p className="product-price">{product.price}</p>
-            
-            
 
-             {/* Buttons for View & Buy Now */}
-             <div className="product-buttons">
-              <Link to={`/product/${product.id}`} ></Link>
-              <button className="buy-btn">Buy Now</button>
-              <button className="add-to-cart">Add to Cart</button>
+            <div className="product-buttons">
+              <Link to={`/buy/${product.id}`} className="buy-btn1">Buy Now</Link>
+              <button className="add-to-cart" onClick={() => addToCart(product)}>Add to Cart</button>
+
+              {/* Like Button */}
+              <button className="like-btn" onClick={() => toggleLike(product)}>
+                <HeartIcon className={`heart-icon ${likedItems.some((item) => item.id === product.id) ? "liked" : "not-liked"}`} />
+              </button>
+
+
             </div>
           </div>
         ))}
@@ -55,6 +88,5 @@ const Products = () => {
     </div>
   );
 };
-
 export default Products;
 

@@ -73,6 +73,54 @@
   color: yellowgreen;
 }
 
+/* Cart & Wishlist Icon Badges */
+.icon {
+  position: relative;
+  display: flex;
+  align-items: center;
+  text-decoration: none;
+  color: white;
+}
+
+/* Red Circular Badge */
+.count {
+  position: absolute;
+  top: -8px;
+  right: -8px;
+  background-color: red;
+  color: white;
+  font-size: 12px;
+  font-weight: bold;
+  padding: 3px 7px;
+  border-radius: 50%;
+  min-width: 20px;
+  min-height: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.3);
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .nav-links {
+    gap: 20px;
+  }
+
+  .icon-style, .cart-icon {
+    width: 24px;
+    height: 24px;
+  }
+
+  .count {
+    font-size: 10px;
+    padding: 2px 5px;
+    min-width: 16px;
+    min-height: 16px;
+  }
+}
+
+
 /*Home page*/
 
 /* Home Page Styling */
@@ -192,19 +240,47 @@
   color: #777;
 }
 
-.buy-button {
-  margin-top: 15px;
-  padding: 8px 15px;
-  background-color: purple;
+/* Buy Button */
+/* Ensure Add to Cart & Buy Now have the same styling */
+.buy-btn,
+.add-to-cart {
+  background: #6a0dad; /* Deep Purple */
   color: white;
-  border: none;
+  text-decoration: none;
+  padding: 10px 15px;
   border-radius: 5px;
+  font-size: 16px;
+  font-weight: bold;
+  text-align: center;
+  border: none;
   cursor: pointer;
-  transition: background 0.3s ease;
+  transition: background 0.3s ease, transform 0.2s ease;
+  display: inline-block;
 }
 
-.buy-button:hover {
-  background-color: darkviolet;
+/* Hover Effect - Darker Purple */
+.buy-btn:hover,
+.add-to-cart:hover {
+  background: #4a226d; /* Darker Purple */
+  transform: scale(1.05);
+}
+
+/* Button Container */
+.product-buttons {
+  display: flex;
+  flex-direction: row;
+  gap: 10px;
+  justify-content: center;
+  align-items: center;
+  margin-top: 15px;
+}
+
+/* Ensure buttons are full-width on smaller screens */
+@media (max-width: 480px) {
+  .buy-btn,
+  .add-to-cart {
+    width: 100%;
+  }
 }
 
 /* Contact Us Page Styling */
@@ -311,10 +387,17 @@
   margin-bottom: 5px;
 }
 
+/* General Styles */
+body {
+  font-family: "Poppins", sans-serif;
+  background-color: #f3e5f5; /* Light Purple */
+  margin: 0;
+  padding: 0;
+}
+
 /* Products Page Styling */
 .products-container {
   min-height: 100vh;
-  background-color: #f3e5f5; /* Light Purple Background */
   display: flex;
   justify-content: center;
   align-items: center;
@@ -379,43 +462,476 @@
   margin-bottom: 10px;
 }
 
-/* Buttons Container */
+/* Buttons */
 .product-buttons {
   display: flex;
   flex-direction: row;
-  gap: 30px;
+  gap: 10px;
   margin-top: 15px;
 }
 
-/* Buy Now & Add to Cart Buttons */
-.buy-btn, .add-to-cart {
+.buy-btn1,
+.add-to-cart {
   padding: 10px;
   font-size: 1rem;
   font-weight: bold;
+  text-align: center;
+  text-decoration: none;
   border: none;
   border-radius: 8px;
   cursor: pointer;
   transition: background 0.3s ease, transform 0.2s ease;
   width: 100%;
   color: white;
+  background-color: #6a1b9a;
 }
 
-/* Buy Now Button */
+.buy-btn1:hover,
+.add-to-cart:hover {
+  background-color: #8e24aa;
+  transform: scale(1.05);
+}
+
+/* Buy Page Styling */
+.buy-container {
+  min-height:10 vh;
+  background-color: #f3e5f5; /* Light Purple */
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 40px;
+}
+
+/* Page Title */
+.buy-title {
+  font-size: 2rem;
+  font-weight: bold;
+  color: #6a1b9a; /* Dark Purple */
+  margin-bottom: 20px;
+}
+
+/* Buy Content Layout */
+.buy-content {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+  align-items: center;
+  background: white;
+  padding: 20px;
+  border-radius: 12px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  max-width: 800px;
+  width: 100%;
+  justify-content: center;
+}
+
+/* Product Details */
+.product-details {
+  text-align: center;
+  max-width: 350px;
+}
+
+.buy-image {
+  width: 250px;
+  height: auto;
+  border-radius: 10px;
+  margin-bottom: 10px;
+}
+
+.buy-product-name {
+  font-size: 1.4rem;
+  font-weight: bold;
+  color: #6a1b9a; /* Dark Purple */
+}
+
+.buy-description {
+  font-size: 1rem;
+  color: #4a148c; /* Deep Purple */
+  margin: 10px 0;
+}
+
+.buy-price {
+  font-size: 1.2rem;
+  font-weight: bold;
+  color: #1b5e20; /* Dark Green */
+}
+
+/* Order Details */
+.order-details {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  text-align: left;
+}
+
+.quantity-input {
+  padding: 8px;
+  font-size: 1rem;
+  border: 2px solid #6a1b9a; /* Dark Purple */
+  border-radius: 5px;
+  width: 60px;
+  text-align: center;
+}
+
+.payment-select {
+  padding: 8px;
+  font-size: 1rem;
+  border: 2px solid #6a1b9a; /* Dark Purple */
+  border-radius: 5px;
+}
+
+.shipping-cost, .total-price {
+  font-size: 1.1rem;
+  font-weight: bold;
+  color: #4a148c; /* Deep Purple */
+}
+
+.total-price {
+  color: #1b5e20; /* Dark Green */
+}
+
+/* Confirm Purchase Button */
+.buy-confirm-btn {
+  padding: 12px 24px;
+  font-size: 1rem;
+  font-weight: bold;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background 0.3s ease, transform 0.2s ease;
+  background-color: #6a1b9a; /* Dark Purple */
+  color: white;
+  margin-top: 10px;
+}
+
+.buy-confirm-btn:hover {
+  background-color: #4a148c; /* Deep Purple */
+  transform: scale(1.05);
+}
+
+/* Error Message */
+.error-message {
+  font-size: 1.5rem;
+  color: red;
+  text-align: center;
+  margin-top: 50px;
+}
+
+/*cart styling*/
+.cart-container {
+  max-width: 800px;
+  margin: 20px auto;
+  padding: 20px;
+  background: #f5e6ff; /* Light purple background */
+  border-radius: 12px;
+  box-shadow: 0px 4px 10px rgba(128, 0, 128, 0.2); /* Purple shadow */
+}
+
+.cart-title {
+  text-align: center;
+  font-size: 24px;
+  color: #6a0dad; /* Deep purple */
+  font-weight: bold;
+  margin-bottom: 20px;
+}
+
+.empty-cart {
+  text-align: center;
+  font-size: 18px;
+  color: #8b5cf6; /* Soft purple */
+  font-weight: bold;
+}
+
+.cart-list {
+  list-style: none;
+  padding: 0;
+}
+
+.cart-item {
+  display: flex;
+  position: relative;
+  align-items: center;
+  background: #ffffff;
+  padding: 10px;
+  border-radius: 10px;
+  gap: 15px;
+  box-shadow: 0px 2px 6px rgba(128, 0, 128, 0.1);
+  margin-bottom: 12px;
+}
+
+.cart-image {
+  width: 80px;
+  height: 80px;
+  border-radius: 8px;
+  margin-right: 15px;
+  border: 2px solid #8b5cf6; /* Purple border */
+}
+
+.cart-name {
+  font-size: 18px;
+  color: #4b0082; /* Indigo */
+  margin-bottom: 5px;
+}
+
+.cart-price {
+  font-size: 16px;
+  color: #6a0dad; /* Deep purple */
+  font-weight: bold;
+}
+
+.cart-link {
+  text-decoration: none;
+  color: inherit;
+  display: flex;
+  align-items: center;
+  transition: transform 0.2s ease-in-out;
+}
+
+.cart-link:hover {
+  transform: scale(1.02);
+}
+
+/*product style */
+.product-page {
+  max-width: 500px;
+  margin: 50px auto;
+  padding: 20px;
+  background: #f8f0ff; /* Light purple */
+  border-radius: 12px;
+  text-align: center;
+  box-shadow: 0 4px 10px rgba(128, 0, 128, 0.2);
+}
+
+.product-page-img {
+  width: 100%;
+  max-height: 300px;
+  object-fit: cover;
+  border-radius: 10px;
+  border: 3px solid #6a0dad;
+}
+
+.product-page-title {
+  font-size: 24px;
+  font-weight: bold;
+  color: #6a0dad;
+  margin: 15px 0;
+}
+
+.product-page-price {
+  font-size: 20px;
+  font-weight: bold;
+  color: #800080;
+}
+
+.buy-now-btn {
+  background: #6a0dad;
+  color: white;
+  font-size: 16px;
+  padding: 10px 15px;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: background 0.3s ease-in-out;
+}
+
+.buy-now-btn:hover {
+  background: #800080;
+}
+
+/* Delete Button */
+.delete-btn {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 5px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: transform 0.2s ease;
+}
+
+/* Trash Icon */
+.delete-icon {
+  width: 24px;
+  height: 24px;
+  color: black; /* Black color */
+  transition: color 0.3s ease, transform 0.2s ease;
+}
+
+/* Hover effect */
+.delete-btn:hover .delete-icon {
+  color: lightslategray; /* Turns red on hover */
+  transform: scale(1.1);
+}
+
+
+
+/* product like*/
+.like-btn {
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 5px;
+}
+
+.heart-icon {
+  width: 24px;
+  height: 24px;
+  transition: color 0.3s ease-in-out;
+  color: grey;
+}
+
+.liked {
+  color: red; /* When liked */
+}
+
+.not-liked {
+  color: grey; /* Default */
+}
+
+/*like button */
+
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap');
+
+.liked-container {
+  padding: 10px;
+  text-align: center;
+  max-width: 500px;
+  margin: auto;
+  font-family: 'Poppins', sans-serif;
+}
+
+.liked-title {
+  font-size: 28px;
+  font-weight: 600;
+  margin-bottom: 20px;
+  color: #6a0dad; /* Deep Purple */
+}
+
+.empty-message {
+  font-size: 18px;
+  color: #7d5ba6; /* Soft Purple */
+}
+
+.liked-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 20px;
+  margin-top: 20px;
+}
+
+.liked-card {
+  background: #f4e9ff; /* Light Purple */
+  padding: 15px;
+  border-radius: 10px;
+  box-shadow: 0px 4px 8px rgba(106, 13, 173, 0.2);
+  text-align: center;
+  transition: transform 0.2s, box-shadow 0.3s;
+}
+
+.liked-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0px 6px 12px rgba(106, 13, 173, 0.3);
+}
+
+.liked-image {
+  width: 100%;
+  height: 200px;
+  object-fit: cover;
+  border-radius: 8px;
+}
+
+.liked-name {
+  font-size: 20px;
+  margin-top: 10px;
+  color: #5b357c; /* Dark Purple */
+  font-weight: 500;
+}
+
+.liked-price {
+  font-size: 18px;
+  font-weight: bold;
+  color: #8a2be2; /* Bright Purple */
+  margin: 5px 0;
+}
+
+.liked-buttons {
+  margin-top: 10px;
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+  align-items: center;
+}
+
+/* Heart Like Button */
+.heart-btn {
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  transition: transform 0.2s ease;
+}
+
+.heart-btn:hover {
+  transform: scale(1.2);
+}
+
+/* Heart Icon Styling */
+.heart-icon {
+  width: 30px;
+  height: 30px;
+  color: #ddd; /* Default gray */
+  transition: color 0.3s ease;
+}
+
+.heart-icon.liked {
+  color: #ff0000; /* Fully Red when liked */
+}
+
+/* Buy Button */
 .buy-btn {
-  background-color: #8e24aa; /* Purple */
+  background: #6a0dad; /* Deep Purple */
+  color: white;
+  text-decoration: none;
+  padding: 8px 12px;
+  border-radius: 5px;
+  display: inline-block;
+  transition: background 0.3s, transform 0.2s;
 }
 
 .buy-btn:hover {
-  background-color: #6a1b9a;
+  background: #4a226d; /* Darker Shade */
   transform: scale(1.05);
 }
 
-/* Add to Cart Button */
-.add-to-cart {
-  background-color: #8e24aa; /* Purple */
+
+/*product */
+
+
+/* Like Button */
+.like-btn {
+  background: none;
+  border: none;
+  cursor: pointer;
 }
 
-.add-to-cart:hover {
-  background-color: #6a1b9a;
-  transform: scale(1.05);
+.heart-icon {
+  width: 24px;
+  height: 24px;
+  transition: transform 0.2s, fill 0.2s;
+  fill: transparent; /* Default transparent fill */
+
 }
+
+.heart-icon.liked {
+  fill: red !important; /* Fully red when liked */
+  stroke: red; /* Ensure the border matches */
+}
+
+.like-btn:hover .heart-icon {
+  transform: scale(1.2);
+}
+
