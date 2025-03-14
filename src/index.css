@@ -20,7 +20,7 @@
 .nav-links {
   display: flex;
   list-style: none;
-  gap: 40px;
+  gap: 30px;
   position: absolute;
   left: 50%;
   transform: translateX(-50%);
