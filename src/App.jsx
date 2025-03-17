@@ -10,6 +10,8 @@ import Navbar from "./components/Navbar";
 import Buy from "./pages/Buy";
 import { CartProvider } from "./pages/CartContext";
 import { LikedProvider } from "./pages/LikedContext";
+import Offers from "./pages/Offers";
+
 
 function App() {
   return (
@@ -24,6 +26,8 @@ function App() {
             <Route path="/liked" element={<LikedProducts />} />
             <Route path="/buy/:id" element={<Buy />} />
             <Route path="/cart" element={<Cart />} />
+            <Route path="/offers" element={<Offers />} />
+      
           </Routes>
       </LikedProvider>
     </CartProvider>
